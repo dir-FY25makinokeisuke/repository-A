@@ -172,20 +172,6 @@ def delete_user(user_id):
         db.session.rollback()
         return jsonify({'error': str(e)}), 500
 
-# API情報取得エンドポイント
-@app.route('/api/info', methods=['GET'])
-def get_info():
-    return jsonify({
-        'name': 'ユーザー管理API',
-        'description': 'シンプルなユーザー管理サービスです。',
-        'version': '1.0.0',
-        'endpoints': [
-            '/api/users/register',
-            '/api/users',
-            '/api/users/<int:user_id>',
-            '/api/users/stats'
-        ]
-    }), 200
 
 # エラーハンドリング
 @app.errorhandler(404)

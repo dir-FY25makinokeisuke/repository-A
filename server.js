@@ -148,19 +148,6 @@ app.delete('/api/users/:id', (req, res) => {
 });
 
 // API情報取得エンドポイント
-app.get('/api/info', (req, res) => {
-  res.json({
-    name: 'ユーザー管理API',
-    description: 'シンプルなユーザー管理サービスです。',
-    version: '1.0.0',
-    endpoints: [
-      '/api/users/register',
-      '/api/users',
-      '/api/users/:id',
-      '/api/users/stats'
-    ]
-  });
-});
 
 // サーバー起動
 app.listen(PORT, () => {
