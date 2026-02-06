@@ -128,25 +128,6 @@ app.get('/api/users/stats', (req, res) => {
   });
 });
 
-
-// ユーザー削除エンドポイント
-app.delete('/api/users/:id', (req, res) => {
-  const id = parseInt(req.params.id, 10);
-  if (isNaN(id)) {
-    return res.status(400).json({ error: '無効なIDです' });
-  }
-
-  db.deleteUserById(id, (err) => {
-    if (err) {
-      if (err.message && err.message.includes('見つかりません')) {
-        return res.status(404).json({ error: 'ユーザーが見つかりません' });
-      }
-      return res.status(500).json({ error: 'ユーザー削除に失敗しました' });
-    }
-    res.json({ message: 'ユーザーを削除しました' });
-  });
-});
-
 // API情報取得エンドポイント
 
 // サーバー起動
