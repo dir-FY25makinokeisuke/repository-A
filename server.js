@@ -63,19 +63,6 @@ app.post('/api/users/register', (req, res) => {
   });
 });
 
-// ユーザー一覧取得エンドポイント
-app.get('/api/users', (req, res) => {
-  db.getAllUsers((err, users) => {
-    if (err) {
-      return res.status(500).json({
-        error: 'ユーザー一覧取得に失敗しました'
-      });
-    }
-
-    res.json({ users });
-  });
-});
-
 // ユーザー更新エンドポイント (名前とメールのみ)
 app.patch('/api/users/:id', (req, res) => {
   const id = parseInt(req.params.id, 10);

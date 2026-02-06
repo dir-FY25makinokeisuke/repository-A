@@ -94,15 +94,6 @@ def register():
         db.session.rollback()
         return jsonify({'error': str(e)}), 500
 
-# ユーザー一覧取得エンドポイント
-@app.route('/api/users', methods=['GET'])
-def get_users():
-    try:
-        users = User.query.all()
-        return jsonify({'users': [user.to_dict() for user in users]}), 200
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
-
 # ユーザー更新エンドポイント (名前とメールのみ)
 @app.route('/api/users/<int:user_id>', methods=['PATCH'])
 def update_user(user_id):
